@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import "./App.css";
 import "./App.scss";
 import "react-toastify/dist/ReactToastify.css";
+import Admin from "./components/Admin";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route exact path="/" element={<Signup />} />
           <Route exact path="/signupWithReferId/:id" element={<Signup />} />
           <Route exact path="/home" element={<Home />} />
+          <Route exact path="/admin" element={<Admin />} />
         </Routes>
       </Router>
     </>

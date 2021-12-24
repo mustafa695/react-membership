@@ -9,13 +9,19 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-a{
+a {
   text-decoration: none;
 }
-a:link{
+a:link {
   text-decoration: none;
 }
-h1,h2,h3,h4,h5,h6,p{
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin-bottom: 0 !important;
 }
 #from_signup {
@@ -60,5 +66,39 @@ h1,h2,h3,h4,h5,h6,p{
       outline: 0;
       letter-spacing: 5px;
     }
+  }
+}
+#admin {
+  width: 100%;
+  .sidemenu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    height: 100%;
+    background: rgb(96, 125, 139);
+    color: #fff;
+    width: 290px;
+    h3 {
+      padding: 1em 0 0;
+      margin-bottom: 3rem !important;
+      font-weight: bold;
+      text-align: center;
+    }
+    li {
+      margin-top: 1rem;
+      list-style-type: circle;
+      padding-left: 1rem;
+      a {
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+    }
+  }
+  .card {
+    margin: 2.5em 0;
+    padding: 20px;
+    box-shadow: 5px 5px 18px 4px rgb(0 0 0 / 5%);
   }
 }

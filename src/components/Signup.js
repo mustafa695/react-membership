@@ -39,14 +39,19 @@ const Signup = () => {
   });
   const location = useLocation();
   let getrefID = location.pathname.length && location.pathname?.split("/")[2];
-
+ 
   useEffect(() => {
     if (getrefID?.length > 1) {
       db.collection("users")
         .doc(getrefID)
         .get()
         .then((res) => {
-          setUsersData(res.data());
+          if (res.data()) {
+            setUsersData(res.data());
+          }
+          else{
+            navigate("/")
+          }
         })
         .catch((err) => console.log(err));
       if (usersData.joinRefId != undefined) {
@@ -55,21 +60,18 @@ const Signup = () => {
           .doc(jid)
           .get()
           .then((res) => {
-           
             setL2Data(res.data());
             if (res.data().joinRefId) {
               db.collection("users")
                 .doc(res.data().joinRefId)
                 .get()
                 .then((res) => {
-                
                   setL3Data(res.data());
                   if (res.data().joinRefId) {
                     db.collection("users")
                       .doc(res.data().joinRefId)
                       .get()
                       .then((res) => {
-                       
                         setL4Data(res.data());
                       })
                       .catch((err) => console.log(err));
@@ -174,7 +176,7 @@ const Signup = () => {
                   .then((res) => {
                     if (getrefID?.length > 1) {
                       let crd = (100 / 100) * 20;
-                      
+
                       db.collection("users")
                         .doc(usersData?.uid)
                         .update({
@@ -183,7 +185,7 @@ const Signup = () => {
                         .then((res) => {
                           if (l2Data.uid) {
                             let crd = (100 / 100) * 10;
-                            
+
                             db.collection("users")
                               .doc(l2Data.uid)
                               .update({
@@ -192,7 +194,7 @@ const Signup = () => {
                               .then((upd1) => {
                                 if (l3Data.uid) {
                                   let crd = (100 / 100) * 5;
-                                  
+
                                   db.collection("users")
                                     .doc(l3Data.uid)
                                     .update({
@@ -201,7 +203,7 @@ const Signup = () => {
                                     .then((res) => {
                                       if (l4Data.uid) {
                                         let crd = (100 / 100) * 1;
-                                     
+
                                         db.collection("users")
                                           .doc(l4Data.uid)
                                           .update({
